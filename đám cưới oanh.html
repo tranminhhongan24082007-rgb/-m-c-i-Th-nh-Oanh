@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> Đám cưới Thành & Oanh</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- AOS animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --main-color:#b68c5a;
+      --dark:#222;
+      --light:#f8f6f3;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Montserrat', sans-serif;
+      color:var(--dark);
+      line-height:1.7;
+    }
+
+    img{max-width:100%; display:block;}
+
+    a{text-decoration:none; color:inherit;}
+
+    section{padding:80px 0;}
+
+    .container{
+      width:90%;
+      max-width:1200px;
+      margin:auto;
+    }
+
+    /* HEADER */
+    header{
+      position:fixed;
+      top:0; left:0;
+      width:100%;
+      background:white;
+      z-index:999;
+      border-bottom:1px solid #eee;
+    }
+
+    .header-inner{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      height:70px;
+    }
+
+    .logo{
+      font-family:'Playfair Display', serif;
+      font-size:24px;
+      font-weight:700;
+      color:var(--main-color);
+    }
+
+    nav a{
+      margin-left:25px;
+      font-size:14px;
+      font-weight:500;
+    }
+
+    /* HERO */
+    .hero{
+      height:100vh;
+      background:url("SEE05921.jpg") center/cover no-repeat;
+      display:flex;
+      align-items:center;
+      position:relative;
+      color:white;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,0.45);
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      max-width:700px;
+    }
+
+    .hero h1{
+      font-family:'Playfair Display', serif;
+      font-size:52px;
+      margin-bottom:15px;
+    }
+
+    .hero p{
+      font-size:18px;
+      margin-bottom:30px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 36px;
+      background:var(--main-color);
+      color:white;
+      border-radius:30px;
+      font-weight:500;
+    }
+
+    /* ABOUT */
+    .about{
+      background:var(--light);
+    }
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:50px;
+      align-items:center;
+    }
+
+    .about h2{
+      font-family:'Playfair Display', serif;
+      font-size:38px;
+      margin-bottom:20px;
+    }
+
+    /* SERVICES */
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:30px;
+    }
+
+    .service{
+      padding:30px;
+      border:1px solid #eee;
+      text-align:center;
+      transition:.3s;
+    }
+
+    .service:hover{
+      transform:translateY(-8px);
+      box-shadow:0 15px 40px rgba(0,0,0,.08);
+    }
+
+    .service h3{
+      margin:20px 0 10px;
+      font-family:'Playfair Display', serif;
+    }
+
+    /* GALLERY */
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:15px;
+    }
+
+    .gallery-grid img{
+      height:260px;
+      object-fit:cover;
+      border-radius:6px;
+    }
+
+    /* FOOTER */
+    footer{
+      background:#111;
+      color:#aaa;
+      text-align:center;
+      padding:25px 0;
+      font-size:14px;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .about-grid,
+      .services-grid{
+        grid-template-columns:1fr;
+      }
+
+      .gallery-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .hero h1{font-size:40px;}
+    }
+/* WISH FORM */
+#wishes h2{
+  font-family:'Playfair Display',serif;
+  text-align:center;
+  margin-bottom:10px;
+}
+
+.wish-box{
+  max-width:600px;
+  margin:0 auto 60px;
+  background:#fff;
+  padding:40px;
+  border-radius:20px;
+  box-shadow:0 20px 40px rgba(0,0,0,.08);
+}
+
+.wish-box p{
+  text-align:center;
+  opacity:.8;
+  margin-bottom:30px;
+}
+
+.form-row{
+  display:flex;
+  gap:15px;
+  margin-bottom:15px;
+}
+
+.wish-box input,
+.wish-box select,
+.wish-box textarea{
+  width:100%;
+  padding:14px;
+  border-radius:10px;
+  border:1px solid #ddd;
+  font-family:inherit;
+}
+
+.wish-box textarea{
+  height:100px;
+  resize:none;
+}
+
+.wish-box button{
+  width:100%;
+  margin-top:20px;
+  padding:14px;
+  border:none;
+  border-radius:30px;
+  background:#b10000;
+  color:#fff;
+  font-size:16px;
+  cursor:pointer;
+}
+
+/* LIST */
+.wish-list h3{
+  text-align:center;
+  margin-bottom:30px;
+  font-family:'Playfair Display',serif;
+}
+
+.wishes{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+
+.wish{
+  background:#fff;
+  padding:20px;
+  border-radius:16px;
+  box-shadow:0 10px 25px rgba(0,0,0,.06);
+}
+
+.wish strong{
+  display:block;
+  margin-bottom:6px;
+}
+
+.wish .role{
+  font-size:13px;
+  opacity:.6;
+  margin-bottom:10px;
+}
+
+    /* MONEY BOX */
+#money-box{
+ background:var(--light);
+};
+  color:#fff;
+  text-align:center;
+}
+
+#money-box h2{
+  font-family:'Playfair Display',serif;
+  font-size:40px;
+  color:var(--main-color);
+  margin-bottom:10px;
+}
+
+.mb-sub{
+  opacity:.85;
+  margin-bottom:50px;
+}
+
+.money-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
+
+..money-card{
+  background:#161a1d;
+  padding:28px;
+  border-radius:20px;
+
+  /* VIỀN SÁNG + MỎNG */
+  border:1px solid rgba(255,255,255,0.25);
+
+  /* GIẢM ĐỔ BÓNG */
+  box-shadow:0 12px 25px rgba(0,0,0,.35);
+
+  transition:.4s;
+}
+
+}
+.money-card:hover{
+  border-color: rgba(255,255,255,0.6);
+}
+
+.money-card h3{
+  margin-bottom:20px;
+  font-weight:500;
+}
+
+.qr-box{
+  background:#fff;
+  padding:15px;
+  border-radius:16px;
+}
+
+.qr-box img{
+  width:100%;
+  border-radius:10px;
+}
+
+.money-card button{
+  margin-top:20px;
+  padding:10px 20px;
+  border:none;
+  border-radius:30px;
+  background:#222;
+  color:#fff;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.money-card button:hover{
+  background:var(--main-color);
+  color:#000;
+}
+#money-box{
+  text-align: center;
+}
+
+/* =========================
+   EVENT INFO – PREMIUM
+========================= */
+#event-info{
+  background:linear-gradient(180deg,#f8f6f3,#ffffff);
+  padding:100px 0;
+}
+
+.event-wrap{
+  max-width:1000px;
+}
+
+.event-header{
+  text-align:center;
+  margin-bottom:70px;
+}
+
+.event-header h2{
+  font-family:'Playfair Display',serif;
+  font-size:42px;
+  margin-bottom:12px;
+  letter-spacing:1px;
+}
+
+.event-header p{
+  opacity:.8;
+  font-size:17px;
+}
+
+/* GRID */
+.event-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:40px;
+  margin-bottom:60px;
+}
+
+.event-card{
+  background:#ffffff;
+  padding:40px 30px;
+  border-radius:24px;
+  box-shadow:0 25px 50px rgba(0,0,0,.08);
+  position:relative;
+  overflow:hidden;
+  transition:.4s ease;
+}
+
+.event-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:4px;
+  background:linear-gradient(90deg,#d6b98c,#b68c5a);
+}
+
+.event-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 35px 70px rgba(0,0,0,.12);
+}
+
+.event-card h3{
+  font-size:20px;
+  margin-bottom:15px;
+}
+
+.event-card p{
+  font-size:17px;
+  line-height:1.6;
+}
+
+/* MAP */
+.event-map{
+  border-radius:30px;
+  overflow:hidden;
+  box-shadow:0 30px 70px rgba(0,0,0,.12);
+  transition:.4s;
+}
+
+.event-map:hover{
+  transform:scale(1.01);
+}
+
+.event-map iframe{
+  width:100%;
+  height:380px;
+  border:0;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .event-header h2{
+    font-size:34px;
+  }
+
+  .event-map iframe{
+    height:300px;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <div class="logo">Thành & Oanh</div>
+    <nav>
+      <a href="#about">Mở đầu</a>
+      <a href="#services">Giới thiệu</a>
+      <a href="#gallery">Hình ảnh</a>
+      <a href="#wishes">Gửi lời chúc</a>
+      <a href="#money-box">Mừng cưới</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-content" data-aos="fade-up">
+    <h1>Đám cưới Thành & Oanh</h1>
+    <p>Kể lại câu chuyện tình yêu bằng hình ảnh, cảm xúc và khoảnh khắc chân thật nhất.</p>
+    <a href="#wishes" class="btn">Gửi lời chúc</a>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <div class="container about-grid">
+    <div data-aos="fade-right">
+      <h2>Câu chuyện của bọn mình</h2>
+      <p> Gặp gỡ là một cái duyên và đi qua đời nhau cũng là một sự sắp đặt định mệnh, một món quà của cuộc sống. Đôi khi chỉ nghĩ lại thôi người ta cũng có lý do để mỉm cười.</p>
+    </div>
+    <img data-aos="fade-left" src="SEE06181.jpg" alt="about">
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="services-grid">
+      <div class="service" data-aos="zoom-in">
+        <h3>Chú rể Tiến Thành</h3>
+            <p>Cha: Phan Viết Tâm</p>
+            <p>Mẹ: Nguyễn Thị Thái</p>
+            <p>Tân lập, Tân trịnh, Tuyên quang</p>
+        <img src="SEE05986.jpg">
+      </div>
+      <div class="service" data-aos="zoom-in" data-aos-delay="150">
+       <h3>Hành trình mới của chúng mình sắp bắt đầu</h3>
+        <p> Và không thể thiếu sự chứng kiến của bạn, quý quan khách! Hẹn gặp bạn vào Hôn lễ để cùng nhau tạo nên những kỷ niệm đẹp nhé!</p>
+        <img src="SEE05959.jpg">
+      </div>
+      <div class="service" data-aos="zoom-in" data-aos-delay="300">
+         <h3>Cô dâu Hoàng Oanh</h3>
+       <p>Cha: Phan lịch</p>
+        <p>Mẹ: Trần Thị Hồng Lành</p>
+        <p>Dương Sơn, Kim Trà, TP Huế</p>
+<img src="SEE05941.jpg">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="container">
+    <h2> Khoảng khắc "yêu" </h2>
+    <div class="gallery-grid">
+      <img src="SEE06570.jpg" data-aos="fade-up">
+      <img src="SEE05799.jpg" data-aos="fade-up" data-aos-delay="100">
+      <img src="SEE06319.jpg" data-aos="fade-up" data-aos-delay="200">
+      <img src="SEE05859.jpg" data-aos="fade-up" data-aos-delay="300">
+    </div>
+  </div>
+</section>
+
+  </div>
+</section>
+<section id="event-info">
+  <div class="container event-wrap">
+
+    <div class="event-header" data-aos="fade-down">
+      <h2>Thời Gian & Địa Điểm</h2>
+      <p>
+        Trân trọng kính mời quý khách đến tham dự lễ thành hôn của chúng tôi 🤍
+      </p>
+    </div>
+<div class="event-grid">
+
+  <!-- LỄ GIA TIÊN - THỜI GIAN -->
+  <div class="event-card" data-aos="fade-up">
+    <h3>💒Thánh lễ Hôn Phối</h3>
+    <p>
+      🕒5h30-03/1/2026 <br>
+(Ngày 15 tháng 11 năm Ất Tỵ)<br>
+📍Thánh đường giáo xứ Dương Sơn <br> 
+(Dương Sơn, Kim Trà, Tp Huế)
+    </p>
+  </div>
+
+  <!-- LỄ GIA TIÊN - ĐỊA ĐIỂM -->
+  <div class="event-card" data-aos="fade-up" data-aos-delay="100">
+    <h3>💖Lễ  vu quy </h3>
+    <p>
+      🕒11h30-03/1/2026 <br>
+(Ngày 15 tháng 11 năm Ất Tỵ)<br>
+      📍Tư gia nhà gái <br>
+(Xóm 1, Dương Sơn, Kim Trà, Tp Huế)
+    </p>
+  </div>
+
+  <!-- TIỆC CƯỚI - THỜI GIAN -->
+  <div class="event-card" data-aos="fade-up" data-aos-delay="200">
+    <h3>💍Lễ Thành Hôn </h3>
+    <p>
+      10h30-10/01/2026 <br>
+(Ngày 22 tháng 11 năm Ất Tỵ)<br>
+    📍Tư gia nhà trai<br>
+(KM9, Tân Lập, Tân Trịnh, Tuyên Quang)<br>
+    </p>
+  </div>
+
+  </div>
+
+
+<!-- WEDDING MONEY BOX -->
+<section id="money-box">
+  <div class="container">
+   <h2 class="center-text">Wedding Money Box</h2>
+
+    <p class="mb-sub" data-aos="fade-up">
+      Vợ chồng xin cảm ơn tất cả tình cảm của mọi người 🤍
+    </p>
+
+    <div class="money-grid">
+      <!-- Chú rể -->
+      <div class="money-card" data-aos="zoom-in">
+        <h3>Mừng cưới đến Chú Rể</h3>
+        <div class="qr-box">
+          <img src="qrtmha.jpg" alt="QR Chú Rể">
+        </div>
+        <button onclick="copyText('0123456789')">Copy STK</button>
+      </div>
+
+      <!-- Cô dâu -->
+      <div class="money-card" data-aos="zoom-in" data-aos-delay="200">
+        <h3>Mừng cưới đến Cô Dâu</h3>
+        <div class="qr-box">
+          <img src="qrtmha.jpg" alt="QR Cô Dâu">
+        </div>
+        <button onclick="copyText('0775411421')">Copy STK</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WISH FORM -->
+<section id="wishes" style="background:#f4f6f8;">
+  <div class="container">
+
+    <div class="wish-box" data-aos="fade-up">
+      <h2>Gửi lời chúc</h2>
+      <p>Cảm ơn bạn đã gửi lời chúc tốt đẹp đến đám cưới của chúng tôi 🤍</p>
+
+      <div class="form-row">
+        <input id="wish-name" placeholder="Họ và Tên">
+        <select id="wish-role">
+          <option>Bạn Cô Dâu</option>
+          <option>Bạn Chú Rể</option>
+          <option>Người thân</option>
+        </select>
+      </div>
+
+      <textarea id="wish-message" placeholder="Nhập lời chúc của bạn"></textarea>
+
+      <button onclick="addWish()">Gửi lời chúc cho Dâu Rể</button>
+    </div>
+
+    <div class="wish-list" data-aos="fade-up">
+      <h3>Lời chúc từ mọi người</h3>
+      <div class="wishes" id="wish-list"></div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  ©tmha.homosapien
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({duration:1000, once:true});
+</script>
+
+<script>
+function addWish(){
+  const name=document.getElementById('wish-name').value;
+  const role=document.getElementById('wish-role').value;
+  const msg=document.getElementById('wish-message').value;
+
+  if(!name || !msg){
+    alert("Vui lòng nhập đầy đủ thông tin");
+    return;
+  }
+
+  const div=document.createElement("div");
+  div.className="wish";
+  div.innerHTML=`
+    <strong>${name}</strong>
+    <div class="role">${role}</div>
+    <div>${msg}</div>
+  `;
+
+  document.getElementById("wish-list").prepend(div);
+
+  document.getElementById('wish-name').value="";
+  document.getElementById('wish-message').value="";
+}
+</script>
+
+<script>
+function copyText(text){
+  navigator.clipboard.writeText(text);
+  alert("Đã copy: " + text);
+}
+
+/* tim bay */
+setInterval(()=>{
+  const heart=document.createElement("div");
+  heart.innerHTML="🤍";
+  heart.style.position="fixed";
+  heart.style.bottom="-20px";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.fontSize=16+Math.random()*20+"px";
+  heart.style.opacity=.8;
+  heart.style.animation="floatUp 6s linear";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),6000);
+},800);
+</script>
+
+<style>
+@keyframes floatUp{
+  from{transform:translateY(0);opacity:1}
+  to{transform:translateY(-110vh);opacity:0}
+}
+</style>
+
+</body>
+</html>
